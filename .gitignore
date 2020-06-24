@@ -80,6 +80,3 @@ buildNumber.properties
 ### MacOS ###
 .DS_Store
 
-# ui.apps/.gitignore
-# Ignore React generated client libraries from source control
-react-app
