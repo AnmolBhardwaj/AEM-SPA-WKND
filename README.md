@@ -1,57 +1,11 @@
-# WKND Events SPA Editor Project
+## What is the AEM SPA Editor JS SDK?
 
-This is the code companion for a tutorial that walks through the process of setting up an AEM project to leverage the Single Page App or SPA Editor feature.
+In short, the SPA Editor JS SDK is a collection of open source JavaScript libraries that provide a framework for allowing authors to edit the contents of a Single Page Application deployed in AEM. AEM delivers the content in the form of JSON and the SPA Editor JS SDK maps the JSON to React components. Please read SPA Editor Overview for a more comprehensive view into how the SPA Editor works. 
 
-## Modules
+# The AEM SPA Editor JS SDK is made available via three NPM modules:
 
-The main parts of the template are:
+    @adobe/cq-spa-component-mapping - provides helpers to map AEM Components to SPA components. This module is not tied to a specific SPA framework.
 
-* react-app: a webpack project for the React application. The App is built and deployed to AEM in the form of a client library via the ui.apps module. see the README beneath the react-app for more details.
-* core: Java bundle containing all core functionality like OSGi services, listeners or schedulers, as well as component-related Java code such as servlets or request filters.
-* ui.apps: contains the /apps (and /etc) parts of the project, ie JS&CSS clientlibs, components, templates, runmode specific configs as well as Hobbes-tests
-* ui.content: contains sample content using the components from the ui.apps
-
-## How to build
-
-To build all the modules run in the project root directory the following command with Maven 3:
-
-    mvn clean install
-
-If you have a running AEM instance you can build and package the whole project and deploy into AEM with  
-
-    mvn clean install -PautoInstallPackage
+    @adobe/cq-spa-page-model-manager - provides the API to manage the model representation of the AEM Pages that are used to compose a SPA. This module is not tied to a specific SPA framework.
     
-Or to deploy it to a publish instance, run
-
-    mvn clean install -PautoInstallPackagePublish
-    
-Or alternatively
-
-    mvn clean install -PautoInstallPackage -Daem.port=4503
-
-Or to deploy only the bundle to the author, run
-
-    mvn clean install -PautoInstallBundle
-
-## Testing
-
-There are three levels of testing contained in the project:
-
-* unit test in core: this show-cases classic unit testing of the code contained in the bundle. To test, execute:
-
-    mvn clean test
-
-* server-side integration tests: this allows to run unit-like tests in the AEM-environment, ie on the AEM server. To test, execute:
-
-    mvn clean verify -PintegrationTests
-
-* client-side Hobbes.js tests: JavaScript-based browser-side tests that verify browser-side behavior. To test:
-
-    in the browser, open the page in 'Developer mode', open the left panel and switch to the 'Tests' tab and find the generated 'MyName Tests' and run them.
-
-
-## Maven settings
-
-The project comes with the auto-public repository configured. To setup the repository in your Maven settings, refer to:
-
-    http://helpx.adobe.com/experience-manager/kb/SetUpTheAdobeMavenRepository.html
+    @adobe/cq-react-editable-components - provides generic React helpers and components to support AEM authoring. This module also wraps the cq-spa-page-model-manager and cq-spa-component-mapping to make these available to the React framework.
